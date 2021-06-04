@@ -1,0 +1,60 @@
+{
+  "name": "hkreuter/oxid-project",
+  "type": "project",
+  "description": "OXID eShop GraphQL project root composer.json file.",
+  "keywords": [
+    "oxidEshop",
+    "metapackage",
+    "GraphQL"
+  ],
+  "license": [
+    "GPL-3.0-only"
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "oxid-esales/oxideshop-ce": "^v6.8.0",
+    "oxid-esales/graphql-storefront": "^1.0.0",
+    "oxid-esales/paypal-module": "dev-b-6.x"
+  },
+  "require-dev": {
+    "oxid-esales/testing-library": "^v8.0.0",
+    "incenteev/composer-parameter-handler": "^v2.0.0",
+    "oxid-esales/oxideshop-ide-helper": "^v4.1.0",
+    "oxid-esales/azure-theme": "^v1.4.2"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "OxidEsales\\EshopCommunity\\Tests\\": "./vendor/oxid-esales/oxideshop-ce/tests"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+      "@oe:ide-helper:generate"
+    ],
+    "post-update-cmd": [
+      "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+      "@oe:ide-helper:generate"
+    ],
+    "oe:ide-helper:generate": [
+      "if [ -f ./vendor/bin/oe-eshop-ide_helper ]; then oe-eshop-ide_helper; fi"
+    ]
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    }
+  },
+  "extra": {
+    "incenteev-parameters": {
+      "file": "test_config.yml",
+      "dist-file": "vendor/oxid-esales/testing-library/test_config.yml.dist",
+      "parameter-key": "mandatory_parameters",
+      "env-map": {
+        "shop_path": "SHOP_PATH",
+        "shop_tests_path": "SHOP_TESTS_PATH",
+        "partial_module_paths": "PARTIAL_MODULE_PATHS"
+      }
+    }
+  }
+}
