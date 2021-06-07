@@ -1,5 +1,5 @@
 # oxid-project
-OXID eShop 6.3.x project
+OXID eShop master project
 
 
 ## How to use
@@ -7,5 +7,5 @@ OXID eShop 6.3.x project
 ```bash
 $ sudo composer self-update --2
 $ cd /var/www
-$ composer create-project hkreuter/oxid-project oxideshop dev-b-6.3.x
+$ composer create-project hkreuter/oxid-project oxideshop dev-master
 ```
